@@ -16,6 +16,9 @@ public:
         return Radius_;
     }
     int getHits() const;
+    void ClearAmount() {
+        amount_ =0 ;
+    }
     int getShoots() const;
     bool shoot(int x , int y);
     std::vector<QPair<double,double>> points_;
