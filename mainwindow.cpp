@@ -117,7 +117,7 @@ void MainWindow::boom() {
      missNumber_->setText("Промахов:" + QString::number(t->getShoots()-t->getHits()));
      amount--;
      if (amount == 0) {
-         if(QMessageBox::question(this,"Игра закончена!","Победа! Давольны своим результатом?",
+         if(QMessageBox::question(this,"Игра закончена!"," Хотите еще сыграть?",
                                QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
               QApplication::quit();
         else {
