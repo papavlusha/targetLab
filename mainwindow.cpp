@@ -1,11 +1,15 @@
 #include "mainwindow.h"
 #include <QDebug>
 #include "enterd.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     EnterDialog enter;
     enter.exec();
+    if (enter.getR()>400) {
+        exit(0);
+    }
     t = new target(enter.getR());
     t->generatePas();
     this->installEventFilter(this);
@@ -72,9 +76,6 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         painter.begin(target_);
         int l = target_->y();
         int R = t->getR();
-        if (R > 400) {
-            QApplication::quit();
-        }
         painter.setPen(QPen(Qt::black, 2, Qt::SolidLine, Qt::FlatCap));
         painter.drawEllipse(target_->width()/2-R,target_->height()/2-R-l, R*2,R*2);//+
         QLine lineX(target_->width()/2-R,target_->height()/2-l,target_->width()/2+R,target_->height()/2-l);//
@@ -167,3 +168,4 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         action_->click();
     }
 }
+
