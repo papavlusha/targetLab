@@ -72,6 +72,9 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         painter.begin(target_);
         int l = target_->y();
         int R = t->getR();
+        if (R > 400) {
+            QApplication::quit();
+        }
         painter.setPen(QPen(Qt::black, 2, Qt::SolidLine, Qt::FlatCap));
         painter.drawEllipse(target_->width()/2-R,target_->height()/2-R-l, R*2,R*2);//+
         QLine lineX(target_->width()/2-R,target_->height()/2-l,target_->width()/2+R,target_->height()/2-l);//
