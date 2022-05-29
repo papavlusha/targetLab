@@ -117,12 +117,12 @@ void MainWindow::boom() {
      missNumber_->setText("Промахов:" + QString::number(t->getShoots()-t->getHits()));
      amount--;
      if (amount == 0) {
-         if(QMessageBox::question(this,"Игра закончена!"," Хотите еще сыграть?",
+         if(QMessageBox::question(this,"Игра закончена!","Хотите еще сыграть?",
                                QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
               QApplication::quit();
         else {
           amount = -1;
-          t->points_.clear();
+          t->ClearAmount();
           t->hitsCoor_.clear();
           action_->setEnabled(false);
           shootsSetter_->setEnabled(true);
